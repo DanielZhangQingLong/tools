@@ -18,6 +18,8 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+
+
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
@@ -42,10 +44,11 @@ Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-tags'
-
-
+Plugin 'slim-template/vim-slim'
+Plugin 'mattn/emmet-vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
+syntax enable
 filetype plugin indent on    " required
 
 
@@ -57,17 +60,23 @@ imap jj <esc>
 " set ctags 
  let Tlist_Ctags_Cmd='/usr/bin/ctags' 
 let mapleader = ","
-" let mapleader = "<A>"
+
  map   <leader>ss :source /usr/share/vim/vimrc<cr>
- map <silent> <leader>ee :!sudo vim /usr/share/vim/vimrc<cr>
+ map <silent> <leader>ee :!sudo vim ~/.vimrc<cr>
  autocmd! bufwritepost vimrc  source /usr/share/vim/vimrc
 
 map <F7> :NERDTreeToggle<CR>
 nmap <A-R>  :!ruby % <CR>
 " map ctrl+s to save current file
-inoremap <c-s> <Esc>:w<cr> <esc>
+inoremap <silent> <C-S>         <C-C>:update<CR>
 noremap <silent> <C-S>          :update<CR>
 vnoremap <silent> <C-S>         <C-C>:update<CR>
+
+" I also map <leader>s to save a file.
+inoremap <leader>s <C-C>:update<CR>
+noremap <leader>s :update<CR>
+vnoremap <leader>s <C-C>:update<CR>
+
 " inoremap <silent> <C-S>         <C-O> :update <Esc><CR>
 " shortcut for saving file which is beyong your authority
 map <silent> <leader>f :w !sudo tee %<cr>
@@ -93,3 +102,10 @@ vnoremap <silent> <space>l :exe "tabn ".g:lasttab<cr>
 au TabLeave * let g:lasttab = tabpagenr()
 noremap <tab> gT
 set backspace=indent,eol,start
+
+" Set colorscheme
+colorscheme darkblue
+" Set the popup menu
+highlight Pmenu ctermfg=black ctermbg=blue
+
+
