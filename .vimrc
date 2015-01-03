@@ -46,6 +46,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-tags'
 Plugin 'slim-template/vim-slim'
 Plugin 'mattn/emmet-vim'
+Plugin 'tpope/vim-haml'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 syntax enable
@@ -61,7 +62,6 @@ imap jj <esc>
  let Tlist_Ctags_Cmd='/usr/bin/ctags' 
 let mapleader = ","
 
- map   <leader>ss :source /usr/share/vim/vimrc<cr>
  map <silent> <leader>ee :!sudo vim ~/.vimrc<cr>
  autocmd! bufwritepost vimrc  source /usr/share/vim/vimrc
 
@@ -76,6 +76,8 @@ vnoremap <silent> <C-S>         <C-C>:update<CR>
 inoremap <leader>s <C-C>:update<CR>
 noremap <leader>s :update<CR>
 vnoremap <leader>s <C-C>:update<CR>
+" Map , ss to be save all
+ map   <leader>ss :wa<cr>
 
 " inoremap <silent> <C-S>         <C-O> :update <Esc><CR>
 " shortcut for saving file which is beyong your authority
