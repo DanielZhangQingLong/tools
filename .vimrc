@@ -46,7 +46,12 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-tags'
 Plugin 'slim-template/vim-slim'
 Plugin 'mattn/emmet-vim'
-Plugin 'tpope/vim-haml'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'Yggdroot/indentLine'
+
+
+" Plugin 'godlygeek/tabular'
+" Plugin 'nathanaelkane/vim-indent-guides'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 syntax enable
@@ -106,8 +111,35 @@ noremap <tab> gT
 set backspace=indent,eol,start
 
 " Set colorscheme
-colorscheme darkblue
+colorscheme delek
 " Set the popup menu
 highlight Pmenu ctermfg=black ctermbg=blue
 
+" Set vim indention
 
+function! ToggleIndentGuidesTabs()
+  if exists('b:iguides_tabs')
+    setlocal nolist
+    let &l:listchars = b:iguides_tabs
+    unlet b:iguides_tabs
+  else
+    let b:iguides_tabs = &l:listchars
+    setlocal listchars=tab:┆\ "protect the space
+    setlocal list
+  endif
+endfunction
+
+function! ToggleIndentGuidesSpaces()
+  if exists('b:iguides_spaces')
+    call matchdelete(b:iguides_spaces)
+    unlet b:iguides_spaces
+  else
+    let pos = range(1, &l:textwidth, &l:shiftwidth)
+    call map(pos, '"\\%" . v:val . "v"')
+    let pat = '\%(\_^\s*\)\@<=\%(' . join(pos, '\|') . '\)\s'
+    let b:iguides_spaces = matchadd('CursorLine', pat)
+  endif
+endfunction
+
+call ToggleIndentGuidesTabs()
+call ToggleIndentGuidesSpaces()
