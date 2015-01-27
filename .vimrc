@@ -47,6 +47,7 @@ Plugin 'vim-tags'
 Plugin 'slim-template/vim-slim'
 Plugin 'mattn/emmet-vim'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'godlygeek/tabular'
 Plugin 'Yggdroot/indentLine'
 
 
@@ -141,5 +142,7 @@ function! ToggleIndentGuidesSpaces()
   endif
 endfunction
 
-call ToggleIndentGuidesTabs()
-call ToggleIndentGuidesSpaces()
+" call ToggleIndentGuidesTabs()
+" call ToggleIndentGuidesSpaces()
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)|tags$'
