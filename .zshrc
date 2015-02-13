@@ -83,9 +83,10 @@ source $ZSH/oh-my-zsh.sh
   alias vim="stty stop '' -ixoff ; vim"
 # # `Frozing' tty, so after any command terminal settings will be restored
   ttyctl -f
- plugins=(autojump)
- [[ -s `brew --prefix`/etc/autojump.zsh  ]] && . `brew --prefix`/etc/autojump.zsh
+#  plugins=(autojump)
+#  [[ -s `brew --prefix`/etc/autojump.zsh  ]] && . `brew --prefix`/etc/autojump.zsh
 
+ [[ -s $(brew --prefix)/etc/profile.d/autojump.sh  ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # zsh enable Ctrl+s save file in vim
