@@ -94,3 +94,4 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 # # `Frozing' tty, so after any command terminal settings will be restored
  ttyctl -f
 alias vi=vim
+# 
