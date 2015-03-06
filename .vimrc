@@ -73,14 +73,14 @@ let mapleader = ","
 map <F7> :NERDTreeToggle<CR>
 nmap <A-R>  :!ruby % <CR>
 " map ctrl+s to save current file
-inoremap <silent> <C-S>         <Esc>:update<CR>
+inoremap <silent> <C-S>         <C-C>:update<CR>
 noremap <silent> <C-S>          :update<CR>
 vnoremap <silent> <C-S>         <C-C>:update<CR>
 
 " I also map <leader>s to save a file.
-inoremap <silent> <leader>s <Esc>:update<CR>
-noremap <silent> <leader>s :update<CR>
-vnoremap <silent> <leader>s <C-C>:update<CR>
+inoremap <leader>s <C-C>:update<CR>
+noremap <leader>s :update<CR>
+vnoremap <leader>s <C-C>:update<CR>
 " Map , ss to be save all
  map   <leader>ss :wa<cr>
 
