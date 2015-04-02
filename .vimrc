@@ -48,6 +48,8 @@ Plugin 'slim-template/vim-slim'
 Plugin 'mattn/emmet-vim'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'Yggdroot/indentLine'
+Plugin 'thinca/vim-quickrun'
+Plugin 'kchmck/vim-coffee-script'
 
 
 " Plugin 'godlygeek/tabular'
