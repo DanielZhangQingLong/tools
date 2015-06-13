@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<root>
+  <devicevendordef>
+    <vendorname>FILCO_MINILA</vendorname>
+    <vendorid>0x0a5c</vendorid>
+  </devicevendordef>
+
+  <item>
+    <name>[FILCO_MINILA] Switch win and alt</name>
+    <identifier>private.devicevendordef0</identifier>
+    <device_only>DeviceVendor::FILCO_MINILA</device_only>
+    <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
+    <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
+  </item>
+
+  <item>
+    <name>[FILCO_MINILA] Map app to alt_R</name>
+    <identifier>private.devicevendordef1</identifier>
+    <device_only>DeviceVendor::FILCO_MINILA</device_only>
+    <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::OPTION_R</autogen>
+  </item>
+
+  <item>
+    <name>[FILCO_MINILA] Map alt_R to cmd_R</name>
+    <identifier>private.devicevendordef2</identifier>
+    <device_only>DeviceVendor::FILCO_MINILA</device_only>
+    <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::COMMAND_R</autogen>
+  </item>
+
+
+  <item>
+    <name>[FILCO_MINILA] Switch backquote and backslash</name>
+    <identifier>private.devicevendordef3</identifier>
+    <device_only>DeviceVendor::FILCO_MINILA</device_only>
+    <autogen>__KeyToKey__ KeyCode::BACKQUOTE, KeyCode::BACKSLASH</autogen>
+    <autogen>__KeyToKey__ KeyCode::BACKSLASH, KeyCode::BACKQUOTE</autogen>
+  </item>
+
+  <item>
+    <name>[FILCO_MINILA] Map cap to fn</name>
+    <identifier>private.devicevendordef4</identifier>
+    <device_only>DeviceVendor::FILCO_MINILA</device_only>
+    <autogen>__KeyToKey__ ModifierFlag::CAPSLOCK, ModifierFlag::FN</autogen>
+  </item>
+
+  <item>
+    <name>[FILCO_MINILA] F10 to volume up</name>
+    <identifier>private.f11volmute</identifier>
+    <autogen>--KeyToConsumer-- KeyCode::F10, ConsumerKeyCode::VOLUME_MUTE</autogen>
+  </item>
+
+
+  <item>
+    <name>[FILCO_MINILA] F11 to volume up</name>
+    <identifier>private.f11voldwn</identifier>
+    <autogen>--KeyToConsumer-- KeyCode::F11, ConsumerKeyCode::VOLUME_DOWN</autogen>
+  </item>
+
+  <item>
+    <name>[FILCO_MINILA] F12 to volume up</name>
+    <identifier>private.f12volup</identifier>
+    <autogen>--KeyToConsumer-- KeyCode::F12, ConsumerKeyCode::VOLUME_UP</autogen>
+  </item>
+
+
+</root>
+

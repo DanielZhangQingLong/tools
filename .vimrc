@@ -28,6 +28,7 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'jiangmiao/auto-pairs'
 
+Plugin 'fatih/vim-go'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tmhedberg/matchit'
 Plugin 'scrooloose/nerdtree'
