@@ -8,6 +8,7 @@ set tabstop=2
 set shiftwidth=2 
 set expandtab
 set foldlevelstart=99
+set hlsearch
 hi link htmlLink NONE
 " Normally we use vim-extensions. If you want true vi-compatibility
 " remove change the following statements
@@ -51,11 +52,22 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'Yggdroot/indentLine'
 Plugin 'thinca/vim-quickrun'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'pangloss/vim-javascript'
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'majutsushi/tagbar'
+Plugin 'tomasr/molokai'
+Plugin 'scrooloose/syntastic'
+
+
+
 
 
 " Plugin 'godlygeek/tabular'
 " Plugin 'nathanaelkane/vim-indent-guides'
 " All of your Plugins must be added before the following line
+
 call vundle#end()            " required
 syntax enable
 filetype plugin indent on    " required
@@ -73,7 +85,10 @@ let mapleader = ","
  map <silent> <leader>ee :!sudo vim ~/.vimrc<cr>
  autocmd! bufwritepost vimrc  source /usr/share/vim/vimrc
 
-map <F7> :NERDTreeToggle<CR>
+nmap <leader>t :TagbarToggle<CR>
+
+nmap <F7> :NERDTreeToggle<CR>
+
 nmap <A-R>  :!ruby % <CR>
 " map ctrl+s to save current file
 inoremap <silent> <C-S>         <C-C>:update<CR>
@@ -87,6 +102,7 @@ vnoremap <leader>s <C-C>:update<CR>
 " Map , ss to be save all
  map   <leader>ss :wa<cr>
 
+
 " inoremap <silent> <C-S>         <C-O> :update <Esc><CR>
 " shortcut for saving file which is beyong your authority
 map <silent> <leader>f :w !sudo tee %<cr>
@@ -96,7 +112,7 @@ map <leader> :q<cr>
 map <leader>b :!sudo vim ~/.vim/bundle<cr>
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 " Auto flush then CtrlP
-nnoremap <silent> <leader>t :ClearCtrlPCache<cr>\|:CtrlP<cr>
+nnoremap <silent> <leader>c :ClearCtrlPCache<cr>\|:CtrlP<cr>
 noremap <space>1 1gt
 noremap <space>2 2gt
 noremap <space>3 3gt
@@ -113,10 +129,21 @@ au TabLeave * let g:lasttab = tabpagenr()
 noremap <tab> gT
 set backspace=indent,eol,start
 
+" switch split window easily.
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 " Set colorscheme
-colorscheme murphy
+colorscheme molokai
+set t_Co=256
+
+set background=dark
 " Set the popup menu
 highlight Pmenu ctermfg=black ctermbg=blue
+
+" Visual color on
+hi Visual term=reverse cterm=reverse guibg=Grey
 
 " Set vim indention
 
