@@ -34,7 +34,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'tmhedberg/matchit'
 Plugin 'scrooloose/nerdtree'
 Plugin 'powerline/fonts'
-Plugin 'tomtom/tlib_vim'
+" Plugin 'tomtom/tlib_vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tpope/vim-fugitive'
 Plugin 'michaeljsmith/vim-indent-object'
@@ -46,26 +46,20 @@ Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-tags'
-Plugin 'slim-template/vim-slim'
-Plugin 'mattn/emmet-vim'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'Yggdroot/indentLine'
-Plugin 'thinca/vim-quickrun'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'pangloss/vim-javascript'
-Plugin 'hail2u/vim-css3-syntax'
+" Plugin 'slim-template/vim-slim'
+" Plugin 'mattn/emmet-vim'
+" Plugin 'plasticboy/vim-markdown'
+" Plugin 'Yggdroot/indentLine'
+" Plugin 'thinca/vim-quickrun'
+" Plugin 'kchmck/vim-coffee-script'
+" Plugin 'nathanaelkane/vim-indent-guides'
+" Plugin 'terryma/vim-multiple-cursors'
+" Plugin 'pangloss/vim-javascript'
+" Plugin 'hail2u/vim-css3-syntax'
 Plugin 'majutsushi/tagbar'
 Plugin 'tomasr/molokai'
 Plugin 'scrooloose/syntastic'
 
-
-
-
-
-" Plugin 'godlygeek/tabular'
-" Plugin 'nathanaelkane/vim-indent-guides'
 " All of your Plugins must be added before the following line
 
 call vundle#end()            " required
@@ -84,6 +78,8 @@ let mapleader = ","
 
  map <silent> <leader>ee :!sudo vim ~/.vimrc<cr>
  autocmd! bufwritepost vimrc  source /usr/share/vim/vimrc
+" Copy to clipboard
+vmap <C-c> :w !pbcopy<CR><CR>
 
 nmap <leader>t :TagbarToggle<CR>
 
@@ -96,9 +92,9 @@ noremap <silent> <C-S>          :update<CR>
 vnoremap <silent> <C-S>         <C-C>:update<CR>
 
 " I also map <leader>s to save a file.
-inoremap <leader>s <C-C>:update<CR>
-noremap <leader>s :update<CR>
-vnoremap <leader>s <C-C>:update<CR>
+" inoremap <leader>s <C-C>:update<CR>
+" noremap <leader>s :update<CR>
+" vnoremap <leader>s <C-C>:update<CR>
 " Map , ss to be save all
  map   <leader>ss :wa<cr>
 
@@ -108,26 +104,25 @@ vnoremap <leader>s <C-C>:update<CR>
 map <silent> <leader>f :w !sudo tee %<cr>
 " make snippet work instancely
 " set quit
-map <leader> :q<cr>
-map <leader>b :!sudo vim ~/.vim/bundle<cr>
-map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+" map <leader> :q<cr>
+" map <leader>b :!sudo vim ~/.vim/bundle<cr>
 " Auto flush then CtrlP
 nnoremap <silent> <leader>c :ClearCtrlPCache<cr>\|:CtrlP<cr>
-noremap <space>1 1gt
-noremap <space>2 2gt
-noremap <space>3 3gt
-noremap <space>4 4gt
-noremap <space>5 5gt
-noremap <space>6 6gt
-noremap <space>7 7gt
-noremap <space>8 8gt
-noremap <space>9 9gt
-noremap <space>0 :tablast<cr>
-nnoremap <silent> <space>l :exe "tabn ".g:lasttab<cr>
-vnoremap <silent> <space>l :exe "tabn ".g:lasttab<cr>
+" noremap <space>1 1gt
+" noremap <space>2 2gt
+" noremap <space>3 3gt
+" noremap <space>4 4gt
+" noremap <space>5 5gt
+" noremap <space>6 6gt
+" noremap <space>7 7gt
+" noremap <space>8 8gt
+" noremap <space>9 9gt
+" noremap <space>0 :tablast<cr>
+" nnoremap <silent> <space>l :exe "tabn ".g:lasttab<cr>
+" vnoremap <silent> <space>l :exe "tabn ".g:lasttab<cr>
 au TabLeave * let g:lasttab = tabpagenr()
-noremap <tab> gT
-set backspace=indent,eol,start
+" noremap <tab> gT
+" set backspace=indent,eol,start
 
 " switch split window easily.
 nnoremap <C-J> <C-W><C-J>
@@ -137,7 +132,6 @@ nnoremap <C-H> <C-W><C-H>
 " Set colorscheme
 colorscheme molokai
 set t_Co=256
-
 set background=dark
 " Set the popup menu
 highlight Pmenu ctermfg=black ctermbg=blue
@@ -147,31 +141,32 @@ hi Visual term=reverse cterm=reverse guibg=Grey
 
 " Set vim indention
 
-function! ToggleIndentGuidesTabs()
-  if exists('b:iguides_tabs')
-    setlocal nolist
-    let &l:listchars = b:iguides_tabs
-    unlet b:iguides_tabs
-  else
-    let b:iguides_tabs = &l:listchars
-    setlocal listchars=tab:┆\ "protect the space
-    setlocal list
-  endif
-endfunction
+" function! ToggleIndentGuidesTabs()
+"   if exists('b:iguides_tabs')
+"     setlocal nolist
+"     let &l:listchars = b:iguides_tabs
+"     unlet b:iguides_tabs
+"   else
+"     let b:iguides_tabs = &l:listchars
+"     setlocal listchars=tab:┆\ "protect the space
+"     setlocal list
+"   endif
+" endfunction
 
-function! ToggleIndentGuidesSpaces()
-  if exists('b:iguides_spaces')
-    call matchdelete(b:iguides_spaces)
-    unlet b:iguides_spaces
-  else
-    let pos = range(1, &l:textwidth, &l:shiftwidth)
-    call map(pos, '"\\%" . v:val . "v"')
-    let pat = '\%(\_^\s*\)\@<=\%(' . join(pos, '\|') . '\)\s'
-    let b:iguides_spaces = matchadd('CursorLine', pat)
-  endif
-endfunction
+" function! ToggleIndentGuidesSpaces()
+"   if exists('b:iguides_spaces')
+"     call matchdelete(b:iguides_spaces)
+"     unlet b:iguides_spaces
+"   else
+"     let pos = range(1, &l:textwidth, &l:shiftwidth)
+"     call map(pos, '"\\%" . v:val . "v"')
+"     let pat = '\%(\_^\s*\)\@<=\%(' . join(pos, '\|') . '\)\s'
+"     let b:iguides_spaces = matchadd('CursorLine', pat)
+"   endif
+" endfunction
 
 " call ToggleIndentGuidesTabs()
 " call ToggleIndentGuidesSpaces()
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)|tags$'
+

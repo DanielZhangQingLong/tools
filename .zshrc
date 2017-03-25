@@ -6,6 +6,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
+#ZSH_THEME="random"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -78,6 +79,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias vim="/usr/local/Cellar/vim/7.4.1967/bin/vim"
+alias vi="/usr/local/Cellar/vim/7.4.1967/bin/vim"
 
 # zsh
 #  alias vim="stty stop '' -ixoff ; vim"
@@ -91,5 +94,10 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="/usr/local/bin:$PATH"
 export PATH="/Applications/Postgres.app/Contents/Versions/9.5/bin:$PATH"
 export GOPATH=$HOME/work
+export CQLSH_NO_BUNDLED=true
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
+export PATH=$JAVA_HOME/bin:$PATH
+
+eval "$(rbenv init -)"
