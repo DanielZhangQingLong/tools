@@ -89,6 +89,7 @@ nmap <A-R>  :!ruby % <CR>
 " map ctrl+s to save current file
 inoremap <silent> <C-S>         <C-C>:update<CR>
 noremap <silent> <C-S>          :update<CR>
+noremap <silent> nh             :noh<CR>
 vnoremap <silent> <C-S>         <C-C>:update<CR>
 
 " I also map <leader>s to save a file.
