@@ -1,12 +1,12 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
-#ZSH_THEME="random"
+
+MAILTO=
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -79,8 +79,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias vim="/usr/local/Cellar/vim/7.4.1967/bin/vim"
-alias vi="/usr/local/Cellar/vim/7.4.1967/bin/vim"
 
 # zsh
 #  alias vim="stty stop '' -ixoff ; vim"
@@ -89,15 +87,34 @@ alias vi="/usr/local/Cellar/vim/7.4.1967/bin/vim"
 #  plugins=(autojump)
 #  [[ -s `brew --prefix`/etc/autojump.zsh  ]] && . `brew --prefix`/etc/autojump.zsh
 
+alias vim=/usr/local/Cellar/vim/8.0.0525/bin/vim
+alias vi=/usr/local/Cellar/vim/8.0.0525/bin/vim
+
+alias sds='ssh deploy@sven'
+alias sdw='ssh deploy@witch'
+alias sdn='ssh deploy@noby'
+alias sdu='ssh ubuntu@heyin_app'
+alias lazypush='git add . && git push'
+alias qadp='bundle exec cap qa deploy'
+alias pddp='bundle exec cap production deploy'
+alias wqqadp='bundle exec cap woqu deploy'
+alias wqpddp='bundle exec cap woqu_prod deploy'
+alias rc='bundle exec rails console'
+
  [[ -s $(brew --prefix)/etc/profile.d/autojump.sh  ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="/usr/local/bin:$PATH"
 export PATH="/Applications/Postgres.app/Contents/Versions/9.5/bin:$PATH"
 export GOPATH=$HOME/work
-export CQLSH_NO_BUNDLED=true
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
-export PATH=$JAVA_HOME/bin:$PATH
 
-eval "$(rbenv init -)"
+#LUNCHY_DIR=$(dirname `gem which lunchy`)/../extras
+#if [ -f $LUNCHY_DIR/lunchy-completion.zsh  ]; then
+#  . $LUNCHY_DIR/lunchy-completion.zsh
+#fi
+
+# homebrew
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+# Proxy
+#export  http_proxy=http://104.156.229.8:58721
