@@ -26,10 +26,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-
 Plugin 'jiangmiao/auto-pairs'
-
-Plugin 'fatih/vim-go'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tmhedberg/matchit'
 Plugin 'scrooloose/nerdtree'
@@ -46,19 +43,22 @@ Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-tags'
+"Plugin 'w0rp/ale'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'chemzqm/vim-jsx-improve'
+"Plugin 'vim-syntastic/syntastic'
+" Plugin 'jelera/vim-javascript-syntax'
 " Plugin 'slim-template/vim-slim'
 " Plugin 'mattn/emmet-vim'
 " Plugin 'plasticboy/vim-markdown'
-" Plugin 'Yggdroot/indentLine'
 " Plugin 'thinca/vim-quickrun'
 " Plugin 'kchmck/vim-coffee-script'
 " Plugin 'nathanaelkane/vim-indent-guides'
 " Plugin 'terryma/vim-multiple-cursors'
-" Plugin 'pangloss/vim-javascript'
 " Plugin 'hail2u/vim-css3-syntax'
 Plugin 'majutsushi/tagbar'
-Plugin 'tomasr/molokai'
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 
 " All of your Plugins must be added before the following line
 
@@ -75,6 +75,7 @@ imap jj <esc>
 " set ctags 
  let Tlist_Ctags_Cmd='/usr/bin/ctags' 
 let mapleader = ","
+"let g:syntastic_javascript_checkers=['eslint']
 
  map <silent> <leader>ee :!sudo vim ~/.vimrc<cr>
  autocmd! bufwritepost vimrc  source /usr/share/vim/vimrc
@@ -110,14 +111,6 @@ map <silent> <leader>f :w !sudo tee %<cr>
 " Auto flush then CtrlP
 nnoremap <silent> <leader>c :ClearCtrlPCache<cr>\|:CtrlP<cr>
 " noremap <space>1 1gt
-" noremap <space>2 2gt
-" noremap <space>3 3gt
-" noremap <space>4 4gt
-" noremap <space>5 5gt
-" noremap <space>6 6gt
-" noremap <space>7 7gt
-" noremap <space>8 8gt
-" noremap <space>9 9gt
 " noremap <space>0 :tablast<cr>
 " nnoremap <silent> <space>l :exe "tabn ".g:lasttab<cr>
 " vnoremap <silent> <space>l :exe "tabn ".g:lasttab<cr>
@@ -131,7 +124,6 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 " Set colorscheme
-colorscheme molokai
 set t_Co=256
 set background=dark
 " Set the popup menu
@@ -140,34 +132,24 @@ highlight Pmenu ctermfg=black ctermbg=blue
 " Visual color on
 hi Visual term=reverse cterm=reverse guibg=Grey
 
-" Set vim indention
-
-" function! ToggleIndentGuidesTabs()
-"   if exists('b:iguides_tabs')
-"     setlocal nolist
-"     let &l:listchars = b:iguides_tabs
-"     unlet b:iguides_tabs
-"   else
-"     let b:iguides_tabs = &l:listchars
-"     setlocal listchars=tab:┆\ "protect the space
-"     setlocal list
-"   endif
-" endfunction
-
-" function! ToggleIndentGuidesSpaces()
-"   if exists('b:iguides_spaces')
-"     call matchdelete(b:iguides_spaces)
-"     unlet b:iguides_spaces
-"   else
-"     let pos = range(1, &l:textwidth, &l:shiftwidth)
-"     call map(pos, '"\\%" . v:val . "v"')
-"     let pat = '\%(\_^\s*\)\@<=\%(' . join(pos, '\|') . '\)\s'
-"     let b:iguides_spaces = matchadd('CursorLine', pat)
-"   endif
-" endfunction
-
-" call ToggleIndentGuidesTabs()
-" call ToggleIndentGuidesSpaces()
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*,*/android/*,*/ios/*
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)|tags$'
 
+" Nerdtree Ignore
+let NERDTreeIgnore = ['^node_modules$']
+
+" Eslint
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_javascript_checkers = ['eslint']
+"let g:syntastic_javascript_eslint_exe = 'npm run lint --'
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\}
+
+let g:jsx_ext_required = 1
